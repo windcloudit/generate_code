@@ -1,0 +1,40 @@
+
+    /**
+    * Constant for field `{columnName}`.
+    */
+    public const {constantColumn} = '{columnName}';
+
+    /**
+    * Set {columnName}
+    * This setter will set value for field `{columnName}`.
+    *
+    * @param int ${variable}
+    *
+    * @return {modelName}Model
+    */
+    public function set{columnFunction}(${variable}): {modelName}Model
+    {
+        if (${variable} === null) {
+            $this->attributes[self::{constantColumn}] = null;
+        } else {
+            $this->attributes[self::{constantColumn}] = (int) ${variable};
+        }
+
+        return $this;
+    }
+
+    /**
+    * Get {columnName}
+    * This getter will get value from field `{columnName}`.
+    *
+    * @return int || null
+    */
+    public function get{columnFunction}(): ?int
+    {
+        $intValue = $this->attributes[self::{constantColumn}];
+        if ($intValue === null) {
+            return null;
+        }
+
+        return (int) $intValue;
+    }

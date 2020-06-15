@@ -1,0 +1,28 @@
+{
+    "name": "windcloud/generate-code",
+    "description": "Generate code for model, service, repository, action and unit test",
+    "type": "library",
+    "require": {
+        "doctrine/dbal": "^4.0@dev"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tat.pham",
+            "email": "tat.pham89@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "WindCloud\\GenerateCode\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WindCloud\\GenerateCode\\GenerateCodeServiceProvider"
+            ]
+        }
+    }
+}

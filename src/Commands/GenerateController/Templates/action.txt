@@ -1,0 +1,16 @@
+    /**
+     * Action {actionName}
+     * @author: Persol Team
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function {actionName}(Request $request): ?JsonResponse
+    {
+        try {
+            $data = [];
+            return $this->successResponse($data);
+        } catch (\Throwable $throwable) {
+            return $this->errorResponse($throwable);
+        }
+    }

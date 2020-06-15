@@ -1,0 +1,177 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2019 Musashino Project. All rights reserved.
+ * -------------------------------------------------------------------------------------------------------------
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Persol Process & Technology Vietnam and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Persol Process & Technology Vietnam
+ * and its suppliers and may be covered by Vietnamese Law,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Persol Process & Technology Vietnam.
+ */
+
+namespace App\Repositories\{modelName}Repository;
+
+use App\Models\{modelName}Model;
+use Exception;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+
+/**
+ *  {modelName} repository
+ *
+ * @category   \App
+ * @package    \App\Repositories
+ * @author     Persol team
+ * @copyright  2018 PERSOL PROCESS & TECHNOLOGY VIETNAM CO., LTD.
+ * @version    1.0
+ * @link       https://ppt-gbc.backlog.com/git/DEV_MUSASINO/musashino_BE.git
+ * @see        {modelName}RepositoryImpl.php
+ * @since      File available since Release 1.0
+ */
+class {modelName}RepositoryImpl implements {modelName}Repository
+{
+
+    // AUTO GENERATED - DO NOT MODIFY FROM HERE
+    //*************************************************
+    /**
+     * Function use for insert new Basic info
+     * @author: Persol team
+     *
+     * @param {modelName}Model ${modelNameParam}
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function save{modelName}({modelName}Model ${modelNameParam}): ?bool
+    {
+        return ${modelNameParam}->save();
+    }
+
+    /**
+     * Function get last record
+     * @author: Persol team
+     *
+     * @return {modelName}Model||null
+     * @throws \Exception
+     */
+    public function getLastRecord(): ?{modelName}Model
+    {
+        // NOTE: Implement getLastRecord() method.
+        return {modelName}Model::orderBy('id', 'desc')->first();
+    }
+
+    /**
+     * Function use for get all record
+     * @author: Persol team
+     *
+     * @param array $columns
+     * @return Collection||static[]
+     */
+    public function getAll($columns = ['*']): Collection
+    {
+        // NOTE: Implement getAll() method.
+        return {modelName}Model::all($columns);
+    }
+
+    /**
+     * Function use for get object by id
+     * @author: Persol team
+     *
+     * @param int $id
+     *
+     * @return {modelName}Model||null
+     * @throws \Exception
+     */
+    public function getById(int $id): ?{modelName}Model
+    {
+        // NOTE: Implement getById() method.
+        return {modelName}Model::find($id);
+    }
+
+    /**
+     * Function use for get list object from where clause
+     * @author: Persol team
+     *
+     * @param array $arrWhere
+     *
+     * @return Collection || null
+     * @throws \Exception
+     */
+    public function getFromWhere(array $arrWhere): Collection
+    {
+        return {modelName}Model::where($arrWhere)->get();
+    }
+
+    /**
+     * Function use for get first object from where clause
+     * @author: Persol team
+     *
+     * @param array $arrWhere
+     *
+     * @return {modelName}Model || null
+     * @throws \Exception
+     */
+    public function getFirstWhere(array $arrWhere): ?{modelName}Model
+    {
+        return {modelName}Model::where($arrWhere)->first();
+    }
+
+    /**
+     * Function use for bulkUpdate
+     * @author: Persol team
+     *
+     * @param array $where
+     * @param array $update
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function bulkUpdate(array $where, array $update): ?bool
+    {
+        return {modelName}Model::where($where)->update($update);
+    }
+
+    /**
+     * Function use for delete a record by Id
+     * @author: Persol team
+     *
+     * @param int $id
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function deleteById(int $id): ?bool
+    {
+        $model = {modelName}Model::find($id);
+        if ($model === null) {
+            throw new \RuntimeException(__('Can not found {modelName} with id :id in database', ['id' => $id]));
+        }
+        $result = $model->delete();
+        if ($result === false) {
+            throw new \RuntimeException(__('Delete {modelName} is not successful'));
+        }
+        return $result;
+    }
+
+    /**
+     * Function use for bulk delete by where query
+     * @author: Persol team
+     *
+     * @param array $where
+     *
+     * @return int
+     * @throws \Exception
+     */
+    public function bulkDeleteByWhere(array $where): ?int
+    {
+        $models = {modelName}Model::where($where);
+        return $models->delete();
+    }
+}

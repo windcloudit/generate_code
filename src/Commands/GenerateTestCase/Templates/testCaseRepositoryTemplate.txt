@@ -1,0 +1,15 @@
+    /**
+    * Get {columnName}
+    * This getter will get value from field `{columnName}`.
+    *
+    * @return Carbon || null
+    */
+    public function get{columnFunction}()
+    {
+        $dateValue = $this->attributes[self::{constantColumn}];
+        if ($dateValue === null) {
+            return null;
+        }
+
+        return Carbon::parse($dateValue);
+    }

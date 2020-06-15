@@ -1,0 +1,12 @@
+    /*
+    * Test test{action}
+    */
+    public function test{action}()
+    {
+        $faker = Faker::create();
+
+        $data = [];
+
+        $response = $this->get(route('{routName}', $data));
+        $response->assertStatus(200);
+    }

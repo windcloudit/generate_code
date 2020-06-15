@@ -1,0 +1,74 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2019 Musashino Project. All rights reserved.
+ * -------------------------------------------------------------------------------------------------------------
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Persol Process & Technology Vietnam and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Persol Process & Technology Vietnam
+ * and its suppliers and may be covered by Vietnamese Law,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Persol Process & Technology Vietnam.
+ */
+
+namespace App\Repositories\{modelName}Repository;
+
+use App\Models\{modelName}Model;
+use App\Repositories\BaseRepository\BaseRepository;
+
+/**
+ *  {modelName} repository
+ *
+ * @category   \App
+ * @package    \App\Repositories
+ * @author     Persol team
+ * @copyright  2018 PERSOL PROCESS & TECHNOLOGY VIETNAM CO., LTD.
+ * @version    1.0
+ * @link       https://ppt-gbc.backlog.com/git/DEV_MUSASINO/musashino_BE.git
+ * @see        {modelName}Repository.php
+ * @since      File available since Release 1.0
+ */
+interface {modelName}Repository extends BaseRepository
+{
+
+    // AUTO GENERATED - DO NOT MODIFY FROM HERE
+    //*************************************************
+
+    /**
+     * Function use for insert new Basic info
+     * @author: Persol team
+     *
+     * @param {modelName}Model ${modelNameParam}
+     *
+     * @return {modelName}Model|bool
+     * @throws \Exception
+     */
+    public function save{modelName}({modelName}Model ${modelNameParam}): ?bool;
+
+    /**
+     * Function use for delete a record by Id
+     * @author: Persol team
+     *
+     * @param $id
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function deleteById(int $id): ?bool;
+
+    /**
+     * Function use for bulk delete by where query
+     * @author: Persol team
+     *
+     * @param array $where
+     *
+     * @return int
+     * @throws \Exception
+     */
+    public function bulkDeleteByWhere(array $where): ?int;
+}

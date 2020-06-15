@@ -1,0 +1,17 @@
+<?php
+
+namespace Tests\{testFolder};
+
+use Faker\Factory as Faker;
+use Tests\TestCase;
+
+class {fileName}Test extends TestCase
+{
+    /**
+     * Setup for new test case.
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+    }
+}

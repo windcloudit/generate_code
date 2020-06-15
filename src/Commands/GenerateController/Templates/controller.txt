@@ -1,0 +1,118 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2019 Musashino Project. All rights reserved.
+ * -------------------------------------------------------------------------------------------------------------
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Persol Process & Technology Vietnam and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Persol Process & Technology Vietnam
+ * and its suppliers and may be covered by Vietnamese Law,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Persol Process & Technology Vietnam.
+ */
+
+namespace App\Http\Controllers\{controllerFolder};
+
+use App\Http\Controllers\Controller;
+use App\Services\{serviceName}Service\{serviceName}Service;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+/**
+ *  {controllerName}Controller controller
+ *
+ * @category   Http/Controllers/{controllerName}
+ * @package    {controllerName}Controller
+ * @copyright  2018 PERSOL PROCESS & TECHNOLOGY VIETNAM CO., LTD.
+ * @version    Release: 1.0
+ * @link       https://ppt-gbc.backlog.com/git/DEV_MUSASINO/musashino_BE.git
+ * @see        {controllerName}Controller.php
+ * @since      File available since Release 1.0
+ */
+class {controllerName}Controller extends Controller
+{
+    /**
+     * @var {serviceName}Service
+     */
+    private {serviceName}Service ${serviceNameCamel}Service;
+
+    public function __construct({serviceName}Service ${serviceNameCamel}Service)
+    {
+        {middlewareGuest}
+        $this->{serviceNameCamel}Service = ${serviceNameCamel}Service;
+    }
+
+    /**
+     * Action for create new {controllerName}
+     * @author: Persol Team
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function create{controllerName}(Request $request): ?JsonResponse
+    {
+        try {
+            $data = $this->{serviceNameCamel}Service->create{controllerName}($request->all());
+            return $this->successResponse($data);
+        } catch (\Throwable $throwable) {
+            return $this->errorResponse($throwable);
+        }
+    }
+
+    /**
+     * Action for get {controllerName} by id
+     * @author: Persol Team
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function get{controllerName}(int $id): ?JsonResponse
+    {
+        try {
+            $data = $this->{serviceNameCamel}Service->get{controllerName}ById($id);
+            return $this->successResponse($data);
+        } catch (\Throwable $throwable) {
+            return $this->errorResponse($throwable);
+        }
+    }
+
+    /**
+     * Action for update a {controllerName} by id
+     * @author: Persol Team
+     *
+     * @param int $id
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function update{controllerName}(int $id, Request $request): ?JsonResponse
+    {
+        try {
+            $data = $this->{serviceNameCamel}Service->update{controllerName}($id, $request->all());
+            return $this->successResponse($data);
+        } catch (\Throwable $throwable) {
+            return $this->errorResponse($throwable);
+        }
+    }
+
+    /**
+     * Action for delete a {controllerName} by id
+     * @author: Persol Team
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function delete{controllerName}(int $id): ?JsonResponse
+    {
+        try {
+            $data = $this->{serviceNameCamel}Service->delete{controllerName}($id);
+            return $this->successResponse($data);
+        } catch (\Throwable $throwable) {
+            return $this->errorResponse($throwable);
+        }
+    }
+}
