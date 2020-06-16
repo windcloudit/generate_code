@@ -1,12 +1,13 @@
 <?php
-/**
- * Trait helper builder class use for generator
- * User: tat.pham
- *
- * Date: 7/19/2018
- * Time: 4:52 PM
- */
 
+/**
+ * This file is part of generate-code
+ *
+ * (c) Tat Pham <tat.pham89@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace WindCloud\GenerateCode;
 
 trait Builder

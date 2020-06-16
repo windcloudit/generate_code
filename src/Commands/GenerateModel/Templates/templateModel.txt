@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Copyright (c) 2019 Musashino Project. All rights reserved.
+ * Copyright (c) 2019 by WindCloud. All rights reserved.
  * -------------------------------------------------------------------------------------------------------------
  * NOTICE:  All information contained herein is, and remains
  * the property of Musashino Process & Technology Vietnam and its suppliers,

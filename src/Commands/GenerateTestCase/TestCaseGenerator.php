@@ -3,20 +3,14 @@
 declare(strict_types=1);
 
 /**
- * Copyright (c) 2019 Musashino Project. All rights reserved.
- * -------------------------------------------------------------------------------------------------------------
- * NOTICE:  All information contained herein is, and remains
- * the property of Persol Process & Technology Vietnam and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to Persol Process & Technology Vietnam
- * and its suppliers and may be covered by Vietnamese Law,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from Persol Process & Technology Vietnam.
+ * This file is part of generate-code
+ *
+ * (c) Tat Pham <tat.pham89@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
-
-namespace WindCloud\GenerateCode\GenerateTestCase;
+namespace WindCloud\GenerateCode;
 
 use WindCloud\GenerateCode\BaseGenerator;
 

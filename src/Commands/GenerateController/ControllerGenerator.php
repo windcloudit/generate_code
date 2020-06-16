@@ -2,11 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WindCloud\GenerateCode\GenerateController;
-
-use WindCloud\GenerateCode\Builder;
-use WindCloud\GenerateCode\GenerateRouter\RouterGenerator;
-use WindCloud\GenerateCode\GenerateTestCase\TestCaseGenerator;
+namespace WindCloud\GenerateCode;
 
 /**
  * Class ControllerGenerator
