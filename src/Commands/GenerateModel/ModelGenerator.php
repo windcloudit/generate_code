@@ -16,23 +16,6 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-/**
- * ImportOrderApi Controller use to import data from
- *  remote server.
- *
- * @category   WindCloud\GenerateCode\GenerateModel
- *
- * @author     Tat.Pham <tat.pham@inte.co.jp>
- * @copyright  2017 PERSOL PROCESS & TECHNOLOGY VIETNAM CO., LTD.
- *
- * @version    1.0
- *
- * @see       https://ppt-gbc.backlog.com/git/DEV_MUSASINO/musashino_BE.git
- * @since     File available since Release 1.0
- */
-
-
-
 class ModelGenerator
 {
     use Builder;

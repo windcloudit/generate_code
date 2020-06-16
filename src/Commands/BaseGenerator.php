@@ -14,18 +14,6 @@ namespace WindCloud\GenerateCode;
 
 use Illuminate\Console\Command;
 
-/**
- *
- * @category   WindCloud\GenerateCode
- *
- * @author     Tat.Pham <tat.pham@inte.co.jp>
- * @copyright  2017 PERSOL PROCESS & TECHNOLOGY VIETNAM CO., LTD.
- *
- * @version    1.0
- *
- * @see       https://ppt-gbc.backlog.com/git/DEV_MUSASINO/musashino_BE.git
- * @since     File available since Release 1.0
- */
 class BaseGenerator
 {
     use Builder;
