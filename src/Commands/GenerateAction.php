@@ -8,9 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace WindCloud\GenerateCode;
 
+use WindCloud\GenerateCode\GenerateController\ControllerGenerator;
+use WindCloud\GenerateCode\GenerateRouter\RouterGenerator;
+use WindCloud\GenerateCode\GenerateService\ServiceGenerator;
+use WindCloud\GenerateCode\GenerateTestCase\TestCaseGenerator;
 use Illuminate\Console\Command;
 
 class GenerateAction extends Command

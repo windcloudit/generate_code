@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of generate-code
  *
@@ -10,7 +8,9 @@ declare(strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace WindCloud\GenerateCode;
+namespace WindCloud\GenerateCode\GenerateService;
+
+use WindCloud\GenerateCode\Builder;
 
 class ServiceGenerator
 {
