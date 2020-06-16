@@ -34,7 +34,7 @@ class ModelGenerator
      * @return int
      * @throws \Exception
      */
-    public function generateModel(array $arrTableModelMapping, array $arrMakeConstant = null)
+    public function generateModel(array $arrTableModelMapping, array $arrMakeConstant = null, $config = null)
     {
         try {
             $getTableList = Arr::pluck(Schema::getAllTables(), 'tablename');
@@ -52,7 +52,7 @@ class ModelGenerator
                 // Get constant key if exist
                 $constantKey = Arr::get($arrMakeConstant, $table, null);
                 echo 'Generate model:' . $modelName . 'Model.php' . "\n";
-                $this->createModel($table, $modelName, $constantKey);
+                $this->createModel($table, $modelName, $constantKey, $config);
                 $count++;
             }
             echo "======END GENERATE MODEL======\n";
@@ -70,7 +70,7 @@ class ModelGenerator
      * @param string|null $columnName
      * @return bool
      */
-    private function createModel(string $tableName, string $modelName, string $columnName = null)
+    private function createModel(string $tableName, string $modelName, string $columnName = null, $config = null)
     {
         //$columnList = Schema::getColumnListing($tableName);
         $columnList = Schema::getConnection()->getDoctrineSchemaManager()->listTableDetails($tableName)->getColumns();
@@ -86,13 +86,14 @@ class ModelGenerator
         if (file_exists($modelPath)) {
             $contentModel = file_get_contents($modelPath);
         } else {
-            $templateModelPath = app_path(implode(DIRECTORY_SEPARATOR, ['Console', 'Commands', 'GenerateModel', 'Templates', 'templateModel.txt']));
+            $templateModelPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR, ['Templates', 'templateModel.txt']));
             //Get template model
             $templateContentNewModel = file_get_contents($templateModelPath);
             $contentModel = self::bind($templateContentNewModel, array(
                 'className' => $modelName,
                 'tableName' => $tableName,
-                'primaryKey' => $this->getPrimaryKey($tableName)
+                'primaryKey' => $this->getPrimaryKey($tableName),
+                'author' => $config->get('generate-model.author')
             ));
         }
         // Separate auto code and manual code
@@ -190,16 +191,16 @@ class ModelGenerator
         //The path of template
         switch ($template) {
             case self::INT_TEMPLATE:
-                $templateGetterSetterPath = app_path(implode(DIRECTORY_SEPARATOR, ['Console', 'Commands', 'GenerateModel', 'Templates', self::INT_TEMPLATE]));
+                $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::INT_TEMPLATE]));
                 break;
             case self::DATETIME_TEMPLATE:
-                $templateGetterSetterPath = app_path(implode(DIRECTORY_SEPARATOR, ['Console', 'Commands', 'GenerateModel', 'Templates', self::DATETIME_TEMPLATE]));
+                $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::DATETIME_TEMPLATE]));
                 break;
             case self::CREATED_UPDATED_AT_TEMPLATE:
-                $templateGetterSetterPath = app_path(implode(DIRECTORY_SEPARATOR, ['Console', 'Commands', 'GenerateModel', 'Templates', self::CREATED_UPDATED_AT_TEMPLATE]));
+                $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::CREATED_UPDATED_AT_TEMPLATE]));
                 break;
             default:
-                $templateGetterSetterPath = app_path(implode(DIRECTORY_SEPARATOR, ['Console', 'Commands', 'GenerateModel', 'Templates', self::DEFAULT_TEMPLATE]));
+                $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::DEFAULT_TEMPLATE]));
                 break;
         }
         //Convert snack to calma

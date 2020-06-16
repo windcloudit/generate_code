@@ -27,12 +27,12 @@ class ControllerGenerator
      * @throws \Exception
      * @author: tat.pham
      */
-    public function generateController(string $controllerFolder, string $controllerName, $serviceName, $isPublishController): ?bool
+    public function generateController(string $controllerFolder, string $controllerName, $serviceName, $isPublishController, $config = null): ?bool
     {
         try {
             echo "======START GENERATE CONTROLLER======\n";
             echo "Create controller: $controllerFolder/$controllerName" . "Controller.php' \n";
-            $this->createController($controllerFolder, $controllerName, $serviceName, $isPublishController);
+            $this->createController($controllerFolder, $controllerName, $serviceName, $isPublishController, $config);
             echo "======END GENERATE CONTROLLER======\n";
             return true;
         } catch (\Exception $exception) {
@@ -51,12 +51,12 @@ class ControllerGenerator
      * @return bool
      * @throws \Exception
      */
-    public function generateAction(string $controllerFolder, string $controllerFile, string $method, string $actionName, string $prefix, string $url, $actionType = 'web')
+    public function generateAction(string $controllerFolder, string $controllerFile, string $method, string $actionName, string $prefix, string $url, $actionType = 'web', $config = null)
     {
         try {
             echo "======START GENERATE ACTION======\n";
             echo "Create action: $actionName()" . "in $controllerFolder/$controllerFile" . "\n";
-            $this->createAction($controllerFolder, $controllerFile, $method, $actionName, $prefix, $url, $actionType);
+            $this->createAction($controllerFolder, $controllerFile, $method, $actionName, $prefix, $url, $actionType, $config);
             echo "======END GENERATE ACTION======\n";
             return true;
         } catch (\Exception $exception) {
@@ -72,7 +72,7 @@ class ControllerGenerator
      * @return bool
      * @throws \Exception
      */
-    private function createController(string $controllerFolder, string $controllerName, $serviceName, $isPublishController)
+    private function createController(string $controllerFolder, string $controllerName, $serviceName, $isPublishController, $config)
     {
         $folder = "Http/Controllers/$controllerFolder";
         $controllerFolderPath = app_path($folder);
@@ -88,7 +88,7 @@ class ControllerGenerator
         }
 
         //Create repository Interface
-        $templateControllerPath = app_path(implode(DIRECTORY_SEPARATOR, ['Console', 'Commands', 'GenerateController', 'Templates', self::CONTROLLER_TEMPLATE]));
+        $templateControllerPath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::CONTROLLER_TEMPLATE]));
 
         //Get template model
         $templateContentNewController = file_get_contents($templateControllerPath);
@@ -97,7 +97,8 @@ class ControllerGenerator
             'serviceName' => $serviceName,
             'controllerName' => $controllerName,
             'serviceNameCamel' => self::convertUpperCaseToCamelCase($controllerName),
-            'middlewareGuest' => $isPublishController ? '$this->middleware(\'guest\');' : ''
+            'middlewareGuest' => $isPublishController ? '$this->middleware(\'guest\');' : '',
+            'author' => $config->get('generate-model.author')
         ));
 
         file_put_contents($fullControllerPath, $contentController);
@@ -114,15 +115,16 @@ class ControllerGenerator
      * @param string $actionType
      * @throws \Exception
      */
-    private function createAction(string $controllerFolder, string $controllerFile, string $method, string $actionName, string $prefix, string $url, string $actionType = 'web')
+    private function createAction(string $controllerFolder, string $controllerFile, string $method, string $actionName, string $prefix, string $url, string $actionType = 'web', $config)
     {
         $folder = "Http/Controllers/$controllerFolder/$controllerFile";
         $controllerFolderPath = app_path($folder);
 
-        $templateActionPath = app_path(implode(DIRECTORY_SEPARATOR, ['Console', 'Commands', 'GenerateController', 'Templates', self::ACTION_TEMPLATE]));
+        $templateActionPath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::ACTION_TEMPLATE]));
         $templateContentNewAction = file_get_contents($templateActionPath);
         $contentAction = self::bind($templateContentNewAction, array(
             'actionName' => $actionName,
+            'author' => $config->get('generate-model.author')
         ));
         $contentController = file_get_contents($controllerFolderPath);
 

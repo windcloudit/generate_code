@@ -31,14 +31,14 @@ class ServiceGenerator
      * @throws \Exception
      * @author: tat.pham
      */
-    public function generateService(string $serviceName, string $repository = null): ?bool
+    public function generateService(string $serviceName, string $repository = null, $config = null): ?bool
     {
         try {
             echo "======START GENERATE SERVICE======\n";
             echo "Create service: $serviceName" . "Service.php' \n";
-            $this->createServiceInterface($serviceName, $repository);
+            $this->createServiceInterface($serviceName, $repository, $config);
             echo "Create service Impl: $serviceName" . "ServiceImpl.php\n";
-            $this->createServiceIml($serviceName, $repository);
+            $this->createServiceIml($serviceName, $repository, $config);
             //Update bind file
             $result = $this->updateBindFile($serviceName);
             echo "======END GENERATE SERVICE======\n";
@@ -57,7 +57,7 @@ class ServiceGenerator
      * @author: tat.pham
      *
      */
-    private function createServiceInterface($serviceName, $repository): bool
+    private function createServiceInterface($serviceName, $repository, $config): bool
     {
         //Model path
         $serviceFolder = app_path(implode(DIRECTORY_SEPARATOR, ['Services', $serviceName . 'Service']));
@@ -71,16 +71,17 @@ class ServiceGenerator
         //Create repository Interface
         $repositoryInterfacePath = $serviceFolder . DIRECTORY_SEPARATOR . $serviceName . 'Service.php';
         if ($repository === null) {
-            $templateRepositoryInterfacePath = app_path(implode(DIRECTORY_SEPARATOR, ['Console', 'Commands', 'GenerateService', 'Templates', self::INTERFACE_TEMPLATE]));
+            $templateRepositoryInterfacePath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::INTERFACE_TEMPLATE]));
         } else {
-            $templateRepositoryInterfacePath = app_path(implode(DIRECTORY_SEPARATOR, ['Console', 'Commands', 'GenerateService', 'Templates', self::INTERFACE_TEMPLATE_CRUD]));
+            $templateRepositoryInterfacePath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::INTERFACE_TEMPLATE_CRUD]));
         }
 
         //Get template model
         $templateContentNewRepositoryInterface = file_get_contents($templateRepositoryInterfacePath);
         if ($repository === null) {
             $contentModel = self::bind($templateContentNewRepositoryInterface, array(
-                'serviceName' => $serviceName
+                'serviceName' => $serviceName,
+                'author' => $config->get('generate-model.author')
             ));
         } else {
             $modelName = explode(self::REPOSITORY, $repository)[0];
@@ -88,7 +89,8 @@ class ServiceGenerator
             $contentModel = self::bind($templateContentNewRepositoryInterface, array(
                 'serviceName' => $serviceName,
                 'modelName' => $modelName,
-                'modelNameCamel' => strtolower(substr($modelName, 0, 1)) . substr($modelName, 1, strlen($modelName))
+                'modelNameCamel' => strtolower(substr($modelName, 0, 1)) . substr($modelName, 1, strlen($modelName)),
+                'author' => $config->get('generate-model.author')
             ));
         }
 
@@ -104,21 +106,15 @@ class ServiceGenerator
      * @return bool
      * @author: tat.pham
      */
-    private function createServiceIml($serviceName, $repository)
+    private function createServiceIml($serviceName, $repository, $config)
     {
         //Model path
         $repositoryImlPath = app_path(implode(DIRECTORY_SEPARATOR, ['Services', $serviceName . 'Service', $serviceName . 'ServiceImpl.php']));
         //Create repository Interface
         if ($repository === null) {
-            $templateRepositoryInterfacePath = app_path(implode(
-                DIRECTORY_SEPARATOR,
-                ['Console', 'Commands', 'GenerateService', 'Templates', self::INTERFACE_IML_TEMPLATE]
-            ));
+            $templateRepositoryInterfacePath = __DIR__ . DIRECTORY_SEPARATOR .(implode(                DIRECTORY_SEPARATOR, ['Templates', self::INTERFACE_IML_TEMPLATE]));
         } else {
-            $templateRepositoryInterfacePath = app_path(implode(
-                DIRECTORY_SEPARATOR,
-                ['Console', 'Commands', 'GenerateService', 'Templates', self::INTERFACE_IML_TEMPLATE_CURD]
-            ));
+            $templateRepositoryInterfacePath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::INTERFACE_IML_TEMPLATE_CURD]));
         }
         //Get template model
         $templateContentNewRepositoryImpl = file_get_contents($templateRepositoryInterfacePath);
@@ -126,7 +122,8 @@ class ServiceGenerator
         //Binding data to template service impl
         if ($repository === null) {
             $contentModel = self::bind($contentModel, array(
-                'serviceName' => $serviceName
+                'serviceName' => $serviceName,
+                'author' => $config->get('generate-model.author')
             ));
         } else {
             $modelName = explode(self::REPOSITORY, $repository)[0];
@@ -137,6 +134,7 @@ class ServiceGenerator
                 'modelNameCamel' => strtolower(substr($modelName, 0, 1)) . substr($modelName, 1, strlen($modelName)),
                 'repositoryName' => $repository,
                 'repositoryNameCamel' => strtolower(substr($repository, 0, 1)) . substr($repository, 1, strlen($repository)),
+                'author' => $config->get('generate-model.author')
             ));
         }
         file_put_contents($repositoryImlPath, $contentModel);

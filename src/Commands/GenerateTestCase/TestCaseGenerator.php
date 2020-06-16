@@ -96,7 +96,7 @@ class TestCaseGenerator extends BaseGenerator
         $testCaseFile = base_path("tests/$testFolder/$folder/$testFileName". 'Test.php');
         $isFileExist = file_exists($testCaseFile);
         if ($isFileExist === false) {
-            $contentDefaultTemplate = file_get_contents(app_path(implode(DIRECTORY_SEPARATOR, ['Console', 'Commands', 'GenerateTestCase', 'Templates', self::TEST_CASE_DEFAULT_TEMPLATE])));
+            $contentDefaultTemplate = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR, ['Templates', self::TEST_CASE_DEFAULT_TEMPLATE])));
             $contentDefaultTestCaseTemplate = self::bind($contentDefaultTemplate, array(
                 'testFolder' => $testFolder,
                 'fileName' => self::convertCamelCaseToUpperCase($testFileName)
@@ -116,7 +116,7 @@ class TestCaseGenerator extends BaseGenerator
         }
 
         // get content template
-        $templateContent = file_get_contents(app_path(implode(DIRECTORY_SEPARATOR, ['Console', 'Commands', 'GenerateTestCase', 'Templates', $template])));
+        $templateContent = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR, ['Templates', $template])));
 
         $contentTestCaseTemplate = self::bind($templateContent, array(
             'action' => self::convertCamelCaseToUpperCase($action),

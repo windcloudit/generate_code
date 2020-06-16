@@ -53,12 +53,12 @@ class GenerateCodeServiceProvider extends ServiceProvider
             return new GenerateModel($app['config']);
         });
 
-        $this->app->singleton('command.generate-service', function () {
-            return new GenerateService();
+        $this->app->singleton('command.generate-service', function ($app) {
+            return new GenerateService($app['config']);
         });
 
-        $this->app->singleton('command.generate-action', function () {
-            return new GenerateAction();
+        $this->app->singleton('command.generate-action', function ($app) {
+            return new GenerateAction($app['config']);
         });
 
         $this->commands('command.generate-model', 'command.generate-service', 'command.generate-action');

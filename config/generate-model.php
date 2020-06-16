@@ -14,5 +14,6 @@ return [
 
     ],
     'constants' => [
-    ]
+    ],
+    'author' => 'My Team'
 ];

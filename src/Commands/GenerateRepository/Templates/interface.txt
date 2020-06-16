@@ -1,16 +1,5 @@
 <?php
 
-
-
-/*
- * This file is part of generate-code
- *
- * (c) Tat Pham <tat.pham89@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App\Repositories\{modelName}Repository;
 
 use App\Models\{modelName}Model;
@@ -21,10 +10,8 @@ use App\Repositories\BaseRepository\BaseRepository;
  *
  * @category   \App
  * @package    \App\Repositories
- * @author     Persol team
- * @copyright  2018 PERSOL PROCESS & TECHNOLOGY VIETNAM CO., LTD.
+ * @author     {author}
  * @version    1.0
- * @link       https://ppt-gbc.backlog.com/git/DEV_MUSASINO/musashino_BE.git
  * @see        {modelName}Repository.php
  * @since      File available since Release 1.0
  */
@@ -36,7 +23,7 @@ interface {modelName}Repository extends BaseRepository
 
     /**
      * Function use for insert new Basic info
-     * @author: Persol team
+     * @author: {author}
      *
      * @param {modelName}Model ${modelNameParam}
      *
@@ -47,7 +34,7 @@ interface {modelName}Repository extends BaseRepository
 
     /**
      * Function use for delete a record by Id
-     * @author: Persol team
+     * @author: {author}
      *
      * @param $id
      *
@@ -58,7 +45,7 @@ interface {modelName}Repository extends BaseRepository
 
     /**
      * Function use for bulk delete by where query
-     * @author: Persol team
+     * @author: {author}
      *
      * @param array $where
      *

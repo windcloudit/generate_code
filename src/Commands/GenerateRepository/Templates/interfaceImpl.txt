@@ -1,16 +1,5 @@
 <?php
 
-
-
-/*
- * This file is part of generate-code
- *
- * (c) Tat Pham <tat.pham89@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App\Repositories\{modelName}Repository;
 
 use App\Models\{modelName}Model;
@@ -23,10 +12,8 @@ use Illuminate\Support\Facades\DB;
  *
  * @category   \App
  * @package    \App\Repositories
- * @author     Persol team
- * @copyright  2018 PERSOL PROCESS & TECHNOLOGY VIETNAM CO., LTD.
+ * @author     {author}
  * @version    1.0
- * @link       https://ppt-gbc.backlog.com/git/DEV_MUSASINO/musashino_BE.git
  * @see        {modelName}RepositoryImpl.php
  * @since      File available since Release 1.0
  */
@@ -37,7 +24,7 @@ class {modelName}RepositoryImpl implements {modelName}Repository
     //*************************************************
     /**
      * Function use for insert new Basic info
-     * @author: Persol team
+     * @author: {author}
      *
      * @param {modelName}Model ${modelNameParam}
      *
@@ -51,7 +38,7 @@ class {modelName}RepositoryImpl implements {modelName}Repository
 
     /**
      * Function get last record
-     * @author: Persol team
+     * @author: {author}
      *
      * @return {modelName}Model||null
      * @throws \Exception
@@ -64,7 +51,7 @@ class {modelName}RepositoryImpl implements {modelName}Repository
 
     /**
      * Function use for get all record
-     * @author: Persol team
+     * @author: {author}
      *
      * @param array $columns
      * @return Collection||static[]
@@ -77,7 +64,7 @@ class {modelName}RepositoryImpl implements {modelName}Repository
 
     /**
      * Function use for get object by id
-     * @author: Persol team
+     * @author: {author}
      *
      * @param int $id
      *
@@ -92,7 +79,7 @@ class {modelName}RepositoryImpl implements {modelName}Repository
 
     /**
      * Function use for get list object from where clause
-     * @author: Persol team
+     * @author: {author}
      *
      * @param array $arrWhere
      *
@@ -106,7 +93,7 @@ class {modelName}RepositoryImpl implements {modelName}Repository
 
     /**
      * Function use for get first object from where clause
-     * @author: Persol team
+     * @author: {author}
      *
      * @param array $arrWhere
      *
@@ -120,7 +107,7 @@ class {modelName}RepositoryImpl implements {modelName}Repository
 
     /**
      * Function use for bulkUpdate
-     * @author: Persol team
+     * @author: {author}
      *
      * @param array $where
      * @param array $update
@@ -135,7 +122,7 @@ class {modelName}RepositoryImpl implements {modelName}Repository
 
     /**
      * Function use for delete a record by Id
-     * @author: Persol team
+     * @author: {author}
      *
      * @param int $id
      *
@@ -157,7 +144,7 @@ class {modelName}RepositoryImpl implements {modelName}Repository
 
     /**
      * Function use for bulk delete by where query
-     * @author: Persol team
+     * @author: {author}
      *
      * @param array $where
      *

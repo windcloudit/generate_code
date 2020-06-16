@@ -57,9 +57,9 @@ class GenerateModel extends Command
         $arrMakeConstant = $this->config->get('generate-model.constants');
         // Generate model
         $modelGenerator = new ModelGenerator();
-        $modelGenerator->generateModel($arrTableModelMapping, $arrMakeConstant);
+        $modelGenerator->generateModel($arrTableModelMapping, $arrMakeConstant, $this->config);
         // Generate repository
         $repositoryGenerator = new RepositoryGenerator();
-        $repositoryGenerator->generateRepository($arrTableModelMapping);
+        $repositoryGenerator->generateRepository($arrTableModelMapping, $this->config);
     }
 }

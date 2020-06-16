@@ -1,6 +1,6 @@
     /**
      * Action {actionName}
-     * @author: Persol Team
+     * @author: {author}
      *
      * @param Request $request
      * @return JsonResponse

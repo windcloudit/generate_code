@@ -35,14 +35,15 @@ class GenerateService extends Command
      * @var string
      */
     protected $description = 'Command description generate service';
-
+    private $config;
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($config)
     {
+        $this->config = $config;
         parent::__construct();
     }
 
@@ -62,7 +63,7 @@ class GenerateService extends Command
                 // Input controller info
                 // Get list folder controller
                 $arrayControllers = self::getListDir(app_path('Http/Controllers'));
-                $controllerFolder = $this->anticipate('Controller folder: ', $arrayControllers);
+                $controllerFolder = $this->choice('Controller folder: ', $arrayControllers);
                 $isPublishController = $this->confirm('This is publish controller?');
                 // Input service info
                 $serviceName = $this->ask('Service name: ');
@@ -72,7 +73,7 @@ class GenerateService extends Command
                 $controllerName = explode(self::REPOSITORY, $repository)[0];
                 // Generate controller
                 $generateController = new ControllerGenerator();
-                $generateController->generateController($controllerFolder, $controllerName, $serviceName, $isPublishController);
+                $generateController->generateController($controllerFolder, $controllerName, $serviceName, $isPublishController, $this->config);
 
                 // Method for CRUD action
                 $arrMethod = ['post', 'get', 'put', 'delete'];
@@ -100,7 +101,7 @@ class GenerateService extends Command
                 }
             }
             $generateService = new ServiceGenerator();
-            $generateService->generateService($serviceName, $repository);
+            $generateService->generateService($serviceName, $repository, $this->config);
             $this->info('Generate service is finish');
         } catch (\Exception $exception) {
             $this->error($exception->getMessage());

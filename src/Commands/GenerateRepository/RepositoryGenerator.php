@@ -29,15 +29,15 @@ class RepositoryGenerator
      *
      * @return int
      */
-    public function generateRepository(array $arrModel)
+    public function generateRepository(array $arrModel, $config = null)
     {
         $count = 0;
         echo "======START GENERATE REPOSITORY======\n";
         foreach ($arrModel as $key => $model) {
             echo "Create repository: $model" . "Repository.php' \n";
-            $this->createRepositoryInterface($model);
+            $this->createRepositoryInterface($model, $config);
             echo "Create repository Impl: $model" . "RepositoryImpl.php\n";
-            $this->createRepositoryIml($model);
+            $this->createRepositoryIml($model, $config);
             $count++;
         }
         //Update bind file
@@ -54,7 +54,7 @@ class RepositoryGenerator
      *
      * @return bool
      */
-    private function createRepositoryInterface($modelName)
+    private function createRepositoryInterface($modelName, $config = null)
     {
         //Model path
         $repositoryFolder = app_path(implode(DIRECTORY_SEPARATOR, ['Repositories', $modelName . 'Repository']));
@@ -65,7 +65,7 @@ class RepositoryGenerator
         }
         //Create repository Interface
         $repositoryInterfacePath = $repositoryFolder . DIRECTORY_SEPARATOR . $modelName . 'Repository.php';
-        $templateRepositoryInterfacePath = app_path(implode(DIRECTORY_SEPARATOR, ['Console', 'Commands', 'GenerateRepository', 'Templates', self::INTERFACE_TEMPLATE]));
+        $templateRepositoryInterfacePath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::INTERFACE_TEMPLATE]));
         //Get template model
         $templateContentNewRepositoryInterface = file_get_contents($templateRepositoryInterfacePath);
         if (file_exists($repositoryInterfacePath)) {
@@ -73,7 +73,8 @@ class RepositoryGenerator
         } else {
             $contentModel = self::bind($templateContentNewRepositoryInterface, array(
                 'modelName' => $modelName,
-                'modelNameParam' => lcfirst($modelName)
+                'modelNameParam' => lcfirst($modelName),
+                'author' => $config->get('generate-model.author')
             ));
         }
         //Separate auto code and manual code
@@ -83,7 +84,8 @@ class RepositoryGenerator
         //Merge manual code with auto code
         $contentModel = $arrRepositoryContent[0] . self::SEPARATE_CODE . self::bind($arrRepositoryTemplateInterfaceContent[1], array(
                 'modelName' => $modelName,
-                'modelNameParam' => lcfirst($modelName)
+                'modelNameParam' => lcfirst($modelName),
+                'author' => $config->get('generate-model.author')
             ));
         file_put_contents($repositoryInterfacePath, $contentModel);
         return true;
@@ -97,12 +99,12 @@ class RepositoryGenerator
      *
      * @return bool
      */
-    private function createRepositoryIml($modelName)
+    private function createRepositoryIml($modelName, $config = null)
     {
         //Model path
         $repositoryImlPath = app_path(implode(DIRECTORY_SEPARATOR, ['Repositories', $modelName . 'Repository', $modelName . 'RepositoryImpl.php']));
         //Create repository Interface
-        $templateRepositoryInterfacePath = app_path(implode(DIRECTORY_SEPARATOR, ['Console', 'Commands', 'GenerateRepository', 'Templates', self::INTERFACE_IML_TEMPLATE]));
+        $templateRepositoryInterfacePath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR, ['Templates', self::INTERFACE_IML_TEMPLATE]));
         //Get template model
         $templateContentNewRepositoryImpl = file_get_contents($templateRepositoryInterfacePath);
         if (file_exists($repositoryImlPath)) {
@@ -118,7 +120,8 @@ class RepositoryGenerator
         $contentModel = $arrRepositoryContent[0] . self::SEPARATE_CODE . $arrRepositoryTemplateInterfaceContent[1];
         $contentModel = self::bind($contentModel, array(
             'modelName' => $modelName,
-            'modelNameParam' => lcfirst($modelName)
+            'modelNameParam' => lcfirst($modelName),
+            'author' => $config->get('generate-model.author')
         ));
         file_put_contents($repositoryImlPath, $contentModel);
         return true;

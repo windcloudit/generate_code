@@ -33,14 +33,16 @@ class GenerateAction extends Command
      * @var string
      */
     protected $description = 'Command generate a action for controller';
+    private $config;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($config)
     {
+        $this->config = $config;
         parent::__construct();
     }
 
@@ -63,7 +65,7 @@ class GenerateAction extends Command
             $url = $this->ask('Url: ');
 
             $generateController = new ControllerGenerator();
-            $generateController->generateAction($controllerFolder, $controllerFile, $method, $actionName, $prefixRoute, $url, $actionType);
+            $generateController->generateAction($controllerFolder, $controllerFile, $method, $actionName, $prefixRoute, $url, $actionType, $this->config);
 
             $this->info('Generate action is finish');
         } catch (\Exception $exception) {
