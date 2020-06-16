@@ -1,11 +1,29 @@
 # laravel generate code
 An artisan command to generate service, provider, action, controller, unit test
 
-### Install with composer
+### How to install
 
+Config yur composer.json
 ```sh
-composer require WindCloud/generate_code
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/windcloudit/laravel-git-sniffer.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/windcloudit/generate_code.git"
+        }
+    ],
 ```
+
+Config in require-dev
+```sh
+    "require-dev": {
+        "windcloud/generate-code": "^1.0.0"
+    },
+```
+
 
 #### Add the provider to app config (You don't need to do this if using Laravel >= 5.5)
 ```sh
@@ -16,6 +34,7 @@ WindCloud\GenerateCode\GenerateCodeServiceProvider
 ```sh
 php artisan vendor:publish --provider="WindCloud\GenerateCode\GenerateCodeServiceProvider" --tag=config
 ```
+
 
 License
 ----
