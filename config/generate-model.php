@@ -11,7 +11,7 @@
 
 return [
     'models' => [
-
+        'tableTest' => 'TestModel'
     ],
     'constants' => [
     ],
