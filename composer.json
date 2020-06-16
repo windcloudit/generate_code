@@ -3,7 +3,7 @@
     "description": "Generate code for model, service, repository, action and unit test",
     "type": "library",
     "require": {
-        "doctrine/dbal": "^4.0@dev"
+        "doctrine/dbal": "^2.10"
     },
     "license": "MIT",
     "authors": [
