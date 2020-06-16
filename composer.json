@@ -21,7 +21,7 @@
             "WindCloud\\GenerateCode\\GenerateRepository": "src/Commands/GenerateRepository",
             "WindCloud\\GenerateCode\\GenerateRouter": "src/Commands/GenerateRouter",
             "WindCloud\\GenerateCode\\GenerateService": "src/Commands/GenerateService",
-            "WindCloud\\GenerateCode\\GenerateTestCase": "src/Commands/GenerateTestCase"
+            "WindCloud\\GenerateCode\\GenerateTestCase": "src/Commands/GenerateTestCase",
         }
     },
     "extra": {
