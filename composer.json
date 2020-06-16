@@ -15,7 +15,13 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "WindCloud\\GenerateCode\\": "src/"
+            "WindCloud\\GenerateCode\\": "src/",
+            "WindCloud\\GenerateCode\\GenerateController": "src/Commands/GenerateController",
+            "WindCloud\\GenerateCode\\GenerateModel": "src/Commands/GenerateModel",
+            "WindCloud\\GenerateCode\\GenerateRepository": "src/Commands/GenerateRepository",
+            "WindCloud\\GenerateCode\\GenerateRouter": "src/Commands/GenerateRouter",
+            "WindCloud\\GenerateCode\\GenerateService": "src/Commands/GenerateService",
+            "WindCloud\\GenerateCode\\GenerateTestCase": "src/Commands/GenerateTestCase"
         }
     },
     "extra": {
