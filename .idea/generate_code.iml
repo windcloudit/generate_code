@@ -2,14 +2,14 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateRepository" isTestSource="false" packagePrefix="WindCloud\GenerateCode\GenerateRepository\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateRepository" isTestSource="false" packagePrefix="WindCloud\GenerateCode\Commands\GenerateRepository\" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="WindCloud\GenerateCode\" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateController" isTestSource="false" packagePrefix="WindCloud\GenerateCode\GenerateController\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateController" isTestSource="false" packagePrefix="WindCloud\GenerateCode\Commands\GenerateController\" />
       <sourceFolder url="file://$MODULE_DIR$/src/Commands" isTestSource="false" packagePrefix="WindCloud\GenerateCode\Commands\" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateService" isTestSource="false" packagePrefix="WindCloud\GenerateCode\GenerateService\" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateModel" isTestSource="false" packagePrefix="WindCloud\GenerateCode\GenerateModel\" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateTestCase" isTestSource="false" packagePrefix="WindCloud\GenerateCode\GenerateTestCase\" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateRouter" isTestSource="false" packagePrefix="WindCloud\GenerateCode\GenerateRouter\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateService" isTestSource="false" packagePrefix="WindCloud\GenerateCode\Commands\GenerateService\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateModel" isTestSource="false" packagePrefix="WindCloud\GenerateCode\Commands\GenerateModel\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateTestCase" isTestSource="false" packagePrefix="WindCloud\GenerateCode\Commands\GenerateTestCase\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateRouter" isTestSource="false" packagePrefix="WindCloud\GenerateCode\Commands\GenerateRouter\" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

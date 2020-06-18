@@ -1,6 +1,6 @@
 <?php
 
-namespace WindCloud\GenerateCode\GenerateController;
+namespace WindCloud\GenerateCode\Commands\GenerateController;
 
 use WindCloud\GenerateCode\Builder;
 use WindCloud\GenerateCode\GenerateRouter\RouterGenerator;

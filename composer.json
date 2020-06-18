@@ -17,12 +17,12 @@
         "psr-4": {
             "WindCloud\\GenerateCode\\": "src/",
             "WindCloud\\GenerateCode\\Commands\\": "src/Commands",
-            "WindCloud\\GenerateCode\\GenerateController\\": "src/Commands/GenerateController",
-            "WindCloud\\GenerateCode\\GenerateModel\\": "src/Commands/GenerateModel",
-            "WindCloud\\GenerateCode\\GenerateRepository\\": "src/Commands/GenerateRepository",
-            "WindCloud\\GenerateCode\\GenerateRouter\\": "src/Commands/GenerateRouter",
-            "WindCloud\\GenerateCode\\GenerateService\\": "src/Commands/GenerateService",
-            "WindCloud\\GenerateCode\\GenerateTestCase\\": "src/Commands/GenerateTestCase"
+            "WindCloud\\GenerateCode\\Commands\\GenerateController\\": "src/Commands/GenerateController",
+            "WindCloud\\GenerateCode\\Commands\\GenerateModel\\": "src/Commands/GenerateModel",
+            "WindCloud\\GenerateCode\\Commands\\GenerateRepository\\": "src/Commands/GenerateRepository",
+            "WindCloud\\GenerateCode\\Commands\\GenerateRouter\\": "src/Commands/GenerateRouter",
+            "WindCloud\\GenerateCode\\Commands\\GenerateService\\": "src/Commands/GenerateService",
+            "WindCloud\\GenerateCode\\Commands\\GenerateTestCase\\": "src/Commands/GenerateTestCase"
         }
     },
     "extra": {

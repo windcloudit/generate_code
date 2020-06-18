@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace WindCloud\GenerateCode\GenerateModel;
+namespace WindCloud\GenerateCode\Commands\GenerateModel;
 
 use WindCloud\GenerateCode\Builder;
 use Illuminate\Support\Arr;
