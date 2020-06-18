@@ -10,7 +10,7 @@
  */
 namespace WindCloud\GenerateCode\Commands\GenerateTestCase;
 
-use WindCloud\GenerateCode\BaseGenerator;
+use WindCloud\GenerateCode\Commands\BaseGenerator;
 
 class TestCaseGenerator extends BaseGenerator
 {

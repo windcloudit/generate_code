@@ -10,10 +10,7 @@
  */
 namespace WindCloud\GenerateCode\Commands;
 
-use WindCloud\GenerateCode\Commands\ControllerGenerator;
-use WindCloud\GenerateCode\Commands\RouterGenerator;
-use WindCloud\GenerateCode\Commands\ServiceGenerator;
-use WindCloud\GenerateCode\Commands\TestCaseGenerator;
+use WindCloud\GenerateCode\Commands\GenerateController\ControllerGenerator;
 use Illuminate\Console\Command;
 
 class GenerateAction extends Command

@@ -10,7 +10,7 @@
  */
 namespace WindCloud\GenerateCode\Commands\GenerateService;
 
-use WindCloud\GenerateCode\Builder;
+use WindCloud\GenerateCode\Commands\Builder;
 
 class ServiceGenerator
 {

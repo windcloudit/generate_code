@@ -2,9 +2,9 @@
 
 namespace WindCloud\GenerateCode\Commands\GenerateController;
 
-use WindCloud\GenerateCode\Builder;
-use WindCloud\GenerateCode\Commands\RouterGenerator;
-use WindCloud\GenerateCode\Commands\TestCaseGenerator;
+use WindCloud\GenerateCode\Commands\Builder;
+use WindCloud\GenerateCode\Commands\GenerateRouter\RouterGenerator;
+use WindCloud\GenerateCode\Commands\GenerateTestCase\TestCaseGenerator;
 
 /**
  * Class ControllerGenerator

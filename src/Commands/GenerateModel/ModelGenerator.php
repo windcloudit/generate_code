@@ -10,7 +10,7 @@
  */
 namespace WindCloud\GenerateCode\Commands\GenerateModel;
 
-use WindCloud\GenerateCode\Builder;
+use WindCloud\GenerateCode\Commands\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
