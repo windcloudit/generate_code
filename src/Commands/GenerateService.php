@@ -10,10 +10,10 @@
  */
 namespace WindCloud\GenerateCode\Commands;
 
-use WindCloud\GenerateCode\GenerateController\ControllerGenerator;
-use WindCloud\GenerateCode\GenerateRouter\RouterGenerator;
-use WindCloud\GenerateCode\GenerateService\ServiceGenerator;
-use WindCloud\GenerateCode\GenerateTestCase\TestCaseGenerator;
+use WindCloud\GenerateCode\Commands\ControllerGenerator;
+use WindCloud\GenerateCode\Commands\RouterGenerator;
+use WindCloud\GenerateCode\Commands\ServiceGenerator;
+use WindCloud\GenerateCode\Commands\TestCaseGenerator;
 use Illuminate\Console\Command;
 
 class GenerateService extends Command

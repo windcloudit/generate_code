@@ -3,8 +3,8 @@
 namespace WindCloud\GenerateCode\Commands\GenerateController;
 
 use WindCloud\GenerateCode\Builder;
-use WindCloud\GenerateCode\GenerateRouter\RouterGenerator;
-use WindCloud\GenerateCode\GenerateTestCase\TestCaseGenerator;
+use WindCloud\GenerateCode\Commands\RouterGenerator;
+use WindCloud\GenerateCode\Commands\TestCaseGenerator;
 
 /**
  * Class ControllerGenerator

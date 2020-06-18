@@ -10,8 +10,8 @@
  */
 namespace WindCloud\GenerateCode\Commands;
 
-use WindCloud\GenerateCode\GenerateModel\ModelGenerator;
-use WindCloud\GenerateCode\GenerateRepository\RepositoryGenerator;
+use WindCloud\GenerateCode\Commands\ModelGenerator;
+use WindCloud\GenerateCode\Commands\RepositoryGenerator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
 
