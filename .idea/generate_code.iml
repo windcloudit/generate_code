@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateRepository" isTestSource="false" packagePrefix="WindCloud\GenerateCode\GenerateRepository\" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="WindCloud\GenerateCode\" />
       <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateController" isTestSource="false" packagePrefix="WindCloud\GenerateCode\GenerateController\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Commands" isTestSource="false" packagePrefix="WindCloud\GenerateCode\Commands\" />
       <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateService" isTestSource="false" packagePrefix="WindCloud\GenerateCode\GenerateService\" />
       <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateModel" isTestSource="false" packagePrefix="WindCloud\GenerateCode\GenerateModel\" />
       <sourceFolder url="file://$MODULE_DIR$/src/Commands/GenerateTestCase" isTestSource="false" packagePrefix="WindCloud\GenerateCode\GenerateTestCase\" />
