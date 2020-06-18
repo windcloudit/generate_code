@@ -11,6 +11,9 @@
 namespace WindCloud\GenerateCode;
 
 use Illuminate\Support\ServiceProvider;
+use WindCloud\GenerateCode\Commands\GenerateAction;
+use WindCloud\GenerateCode\Commands\GenerateModel;
+use WindCloud\GenerateCode\Commands\GenerateService;
 
 class GenerateCodeServiceProvider extends ServiceProvider
 {
