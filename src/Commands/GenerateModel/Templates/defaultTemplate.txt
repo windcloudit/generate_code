@@ -23,7 +23,7 @@
     * Get {columnName}
     * This getter will get value from field `{columnName}`.
     *
-    * @return ?string
+    * @return ?string || null
     */
     public function get{columnFunction}(): {isNotNull}string
     {

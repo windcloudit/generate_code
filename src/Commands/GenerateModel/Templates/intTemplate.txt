@@ -27,7 +27,7 @@
     * Get {columnName}
     * This getter will get value from field `{columnName}`.
     *
-    * @return {isNotNull}int
+    * @return {isNotNull}int || null
     */
     public function get{columnFunction}(): {isNotNull}int
     {

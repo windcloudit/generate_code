@@ -23,7 +23,7 @@
     * Get {columnName}
     * This getter will get value from field `{columnName}`.
     *
-    * @return ?Carbon
+    * @return ?Carbon || null
     */
     public function get{columnFunction}(): {isNotNull}Carbon
     {
