@@ -12,14 +12,9 @@
     *
     * @return {modelName}Model
     */
-    public function set{columnFunction}(=int ${variable}): {modelName}Model
+    public function set{columnFunction}(int ${variable}): {modelName}Model
     {
-        if (${variable} === null) {
-            $this->attributes[self::{constantColumn}] = null;
-        } else {
-            $this->attributes[self::{constantColumn}] = (int) ${variable};
-        }
-
+        $this->attributes[self::{constantColumn}] = ${variable};
         return $this;
     }
 

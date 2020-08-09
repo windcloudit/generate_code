@@ -15,7 +15,6 @@
     public function set{columnFunction}(string ${variable}): {modelName}Model
     {
         $this->attributes[self::{constantColumn}] = ${variable};
-
         return $this;
     }
 

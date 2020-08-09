@@ -8,7 +8,7 @@
     * Set {columnName}
     * This setter will set value for field `{columnName}`.
     *
-    * @param {isNotNull}Carbon|{isNotNull}string ${variable}
+    * @param Carbon|string ${variable}
     *
     * @return {modelName}Model
     */
