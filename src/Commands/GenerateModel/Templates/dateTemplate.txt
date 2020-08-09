@@ -8,11 +8,11 @@
     * Set {columnName}
     * This setter will set value for field `{columnName}`.
     *
-    * @param Carbon|string ${variable}
+    * @param {isNotNull}Carbon|{isNotNull}string ${variable}
     *
     * @return {modelName}Model
     */
-    public function set{columnFunction}({isNotNull}${variable}): {modelName}Model
+    public function set{columnFunction}(${variable}): {modelName}Model
     {
         $this->attributes[self::{constantColumn}] = ${variable};
 
@@ -23,7 +23,7 @@
     * Get {columnName}
     * This getter will get value from field `{columnName}`.
     *
-    * @return ?Carbon || null
+    * @return ?Carbon | null
     */
     public function get{columnFunction}(): {isNotNull}Carbon
     {

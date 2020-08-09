@@ -8,7 +8,7 @@
     * Set {columnName}
     * This setter will set value for field `{columnName}`.
     *
-    * @param int ${variable}
+    * @param {isNotNull}int ${variable}
     *
     * @return {modelName}Model
     */
@@ -27,7 +27,7 @@
     * Get {columnName}
     * This getter will get value from field `{columnName}`.
     *
-    * @return {isNotNull}int || null
+    * @return {isNotNull}int | null
     */
     public function get{columnFunction}(): {isNotNull}int
     {
