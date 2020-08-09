@@ -12,7 +12,7 @@
     *
     * @return {modelName}Model
     */
-    public function set{columnFunction}(${variable}): {modelName}Model
+    public function set{columnFunction}({isNotNull}string ${variable}): {modelName}Model
     {
         $this->attributes[self::{constantColumn}] = ${variable};
 
@@ -23,9 +23,9 @@
     * Get {columnName}
     * This getter will get value from field `{columnName}`.
     *
-    * @return string || null
+    * @return ?string
     */
-    public function get{columnFunction}(): ?string
+    public function get{columnFunction}(): {isNotNull}string
     {
         return $this->attributes[self::{constantColumn}];
     }

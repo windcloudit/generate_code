@@ -156,6 +156,8 @@ class ModelGenerator
         $columnName = $column->getName();
         //Get type from columnType
         $type = $column->getType()->getName();
+        //Get nullable or not
+        $isNotNull = $column->getNotNull();
         //declare variable content getter setter method
         switch ($type) {
             case 'int':
@@ -163,30 +165,32 @@ class ModelGenerator
             case 'integer':
             case 'bigint':
             case 'smallint':
-                $strGetterSetterMethod = $this->generateGetterSetterFromTemplate($columnName, $modelName, self::INT_TEMPLATE);
+                $strGetterSetterMethod = $this->generateGetterSetterFromTemplate($columnName, $modelName, $isNotNull, self::INT_TEMPLATE);
                 break;
             case 'date':
             case 'timestamp':
             case 'datetime':
-                $strGetterSetterMethod = $this->generateGetterSetterFromTemplate($columnName, $modelName, ($columnName === 'created_at' || $columnName === 'updated_at') ? self::CREATED_UPDATED_AT_TEMPLATE : self::DATETIME_TEMPLATE);
+                $strGetterSetterMethod = $this->generateGetterSetterFromTemplate($columnName, $modelName, $isNotNull, ($columnName === 'created_at' || $columnName === 'updated_at') ? self::CREATED_UPDATED_AT_TEMPLATE : self::DATETIME_TEMPLATE);
                 break;
             default:
-                $strGetterSetterMethod = $this->generateGetterSetterFromTemplate($columnName, $modelName, self::DEFAULT_TEMPLATE);
+                $strGetterSetterMethod = $this->generateGetterSetterFromTemplate($columnName, $modelName, $isNotNull, self::DEFAULT_TEMPLATE);
                 break;
         }
         return $strGetterSetterMethod;
     }
-
+    
     /**
      * Function use for generate setter getter method from template
      * @author: tat.pham
      *
      * @param $columnName
+     * @param $modelName
+     * @param bool $isNotNull
      * @param $template
      *
      * @return bool|string
      */
-    private function generateGetterSetterFromTemplate($columnName, $modelName, $template)
+    private function generateGetterSetterFromTemplate($columnName, $modelName, $isNotNull, $template)
     {
         //The path of template
         switch ($template) {
@@ -214,7 +218,8 @@ class ModelGenerator
             'modelName' => $modelName,
             'columnName' => $columnName,
             'columnFunction' => $strColumnName,
-            'variable' => $variable
+            'variable' => $variable,
+            'isNotNull' => $isNotNull === false ? '?' : ''
         ]);
 
         return $strResult;
