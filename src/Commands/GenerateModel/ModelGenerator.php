@@ -21,9 +21,13 @@ class ModelGenerator
 
     const SEPARATE_CODE = '//*************************************************';
     const INT_TEMPLATE = 'intTemplate.txt';
+    const INT_TEMPLATE_NULLABLE = 'intTemplateNullable.txt';
     const DATETIME_TEMPLATE = 'dateTemplate.txt';
+    const DATETIME_TEMPLATE_NULLABLE = 'dateTemplateNullable.txt';
     const CREATED_UPDATED_AT_TEMPLATE = 'createdUpdatedAtTemplate.txt';
+    const CREATED_UPDATED_AT_TEMPLATE_NULLABLE = 'createdUpdatedAtTemplateNullable.txt';
     const DEFAULT_TEMPLATE = 'defaultTemplate.txt';
+    const DEFAULT_TEMPLATE_NULLABLE = 'defaultTemplateNullable.txt';
 
     /**
      * Function use for generate model from array mapping table
@@ -195,16 +199,40 @@ class ModelGenerator
         //The path of template
         switch ($template) {
             case self::INT_TEMPLATE:
-                $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::INT_TEMPLATE]));
+                if($isNotNull) {
+                    $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
+                            ['Templates', self::INT_TEMPLATE]));
+                } else {
+                    $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
+                            ['Templates', self::INT_TEMPLATE_NULLABLE]));
+                }
                 break;
             case self::DATETIME_TEMPLATE:
-                $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::DATETIME_TEMPLATE]));
+                if($isNotNull) {
+                    $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
+                            ['Templates', self::DATETIME_TEMPLATE]));
+                } else {
+                    $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
+                            ['Templates', self::DATETIME_TEMPLATE_NULLABLE]));
+                }
                 break;
             case self::CREATED_UPDATED_AT_TEMPLATE:
-                $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::CREATED_UPDATED_AT_TEMPLATE]));
+                if($isNotNull) {
+                    $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
+                            ['Templates', self::CREATED_UPDATED_AT_TEMPLATE]));
+                } else {
+                    $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
+                            ['Templates', self::CREATED_UPDATED_AT_TEMPLATE_NULLABLE]));
+                }
                 break;
             default:
-                $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR .(implode(DIRECTORY_SEPARATOR, ['Templates', self::DEFAULT_TEMPLATE]));
+                if($isNotNull) {
+                    $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
+                            ['Templates', self::DEFAULT_TEMPLATE]));
+                } else {
+                    $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
+                            ['Templates', self::DEFAULT_TEMPLATE_NULLABLE]));
+                }
                 break;
         }
         //Convert snack to calma
@@ -218,8 +246,7 @@ class ModelGenerator
             'modelName' => $modelName,
             'columnName' => $columnName,
             'columnFunction' => $strColumnName,
-            'variable' => $variable,
-            'isNotNull' => $isNotNull === false ? '?' : ''
+            'variable' => $variable
         ]);
 
         return $strResult;

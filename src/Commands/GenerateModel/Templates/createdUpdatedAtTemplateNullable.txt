@@ -8,13 +8,14 @@
     * Set {columnName}
     * This setter will set value for field `{columnName}`.
     *
-    * @param Carbon|string ${variable}
+    * @param ?Carbon|?string ${variable}
     *
     * @return {modelName}Model
     */
     public function set{columnFunction}(${variable}): {modelName}Model
     {
         $this->attributes[self::{constantColumn}] = ${variable};
+
         return $this;
     }
 
@@ -22,10 +23,14 @@
     * Get {columnName}
     * This getter will get value from field `{columnName}`.
     *
-    * @return int
+    * @return ?int
     */
-    public function get{columnFunction}(): {isNotNull}int
+    public function get{columnFunction}(): ?int
     {
         $dateValue = $this->attributes[self::{constantColumn}];
+        if ($dateValue === null) {
+            return null;
+        }
+
         return Carbon::parse($dateValue)->timestamp;
     }

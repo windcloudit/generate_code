@@ -8,11 +8,11 @@
     * Set {columnName}
     * This setter will set value for field `{columnName}`.
     *
-    * @param int ${variable}
+    * @param ?int ${variable}
     *
     * @return {modelName}Model
     */
-    public function set{columnFunction}(=int ${variable}): {modelName}Model
+    public function set{columnFunction}(?int ${variable}): {modelName}Model
     {
         if (${variable} === null) {
             $this->attributes[self::{constantColumn}] = null;
@@ -27,10 +27,14 @@
     * Get {columnName}
     * This getter will get value from field `{columnName}`.
     *
-    * @return int
+    * @return ?int | null
     */
-    public function get{columnFunction}(): int
+    public function get{columnFunction}(): ?int
     {
         $intValue = $this->attributes[self::{constantColumn}];
+        if ($intValue === null) {
+            return null;
+        }
+
         return (int) $intValue;
     }

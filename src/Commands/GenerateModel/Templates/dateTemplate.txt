@@ -15,7 +15,6 @@
     public function set{columnFunction}(${variable}): {modelName}Model
     {
         $this->attributes[self::{constantColumn}] = ${variable};
-
         return $this;
     }
 
@@ -23,14 +22,10 @@
     * Get {columnName}
     * This getter will get value from field `{columnName}`.
     *
-    * @return ?Carbon | null
+    * @return Carbon
     */
-    public function get{columnFunction}(): {isNotNull}Carbon
+    public function get{columnFunction}(): Carbon
     {
         $dateValue = $this->attributes[self::{constantColumn}];
-        if ($dateValue === null) {
-            return null;
-        }
-
         return Carbon::parse($dateValue);
     }
