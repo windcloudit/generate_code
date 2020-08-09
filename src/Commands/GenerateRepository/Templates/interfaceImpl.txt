@@ -40,13 +40,15 @@ class {modelName}RepositoryImpl implements {modelName}Repository
      * Function get last record
      * @author: {author}
      *
+     * @param array $arrCols
+     *
      * @return {modelName}Model||null
      * @throws \Exception
      */
-    public function getLastRecord(): ?{modelName}Model
+    public function getLastRecord(array $arrCols = ['*']): ?{modelName}Model
     {
         // NOTE: Implement getLastRecord() method.
-        return {modelName}Model::orderBy('id', 'desc')->first();
+        return {modelName}Model::orderBy('id', 'desc')->first($arrCols);
     }
 
     /**
@@ -82,13 +84,14 @@ class {modelName}RepositoryImpl implements {modelName}Repository
      * @author: {author}
      *
      * @param array $arrWhere
+     * @param ?array $arrCols
      *
      * @return Collection || null
      * @throws \Exception
      */
-    public function getFromWhere(array $arrWhere): Collection
+    public function getFromWhere(array $arrWhere, array $arrCols = ['*']): Collection
     {
-        return {modelName}Model::where($arrWhere)->get();
+        return {modelName}Model::where($arrWhere)->get($arrCols);
     }
 
     /**
@@ -96,13 +99,14 @@ class {modelName}RepositoryImpl implements {modelName}Repository
      * @author: {author}
      *
      * @param array $arrWhere
+     * @param ?array $arrCols
      *
      * @return {modelName}Model || null
      * @throws \Exception
      */
-    public function getFirstWhere(array $arrWhere): ?{modelName}Model
+    public function getFirstWhere(array $arrWhere, array $arrCols = ['*']): ?{modelName}Model
     {
-        return {modelName}Model::where($arrWhere)->first();
+        return {modelName}Model::where($arrWhere)->first($arrCols);
     }
 
     /**
