@@ -169,6 +169,7 @@ class ModelGenerator
             case 'integer':
             case 'bigint':
             case 'smallint':
+            case 'boolean':
                 $strGetterSetterMethod = $this->generateGetterSetterFromTemplate($columnName, $modelName, $isNotNull, self::INT_TEMPLATE);
                 break;
             case 'date':
