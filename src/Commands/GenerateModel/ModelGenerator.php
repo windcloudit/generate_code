@@ -41,7 +41,7 @@ class ModelGenerator
     public function generateModel(array $arrTableModelMapping, array $arrMakeConstant = null, $config = null)
     {
         try {
-            $getTableList = Schema::getConnection()->getDoctrineSchemaManager()->listTableNames()
+            $getTableList = Schema::getConnection()->getDoctrineSchemaManager()->listTableNames();
             $count = 0;
             echo "======START GENERATE MODEL======\n";
             foreach ($getTableList as $key => $table) {
