@@ -41,7 +41,7 @@ class ModelGenerator
     public function generateModel(array $arrTableModelMapping, array $arrMakeConstant = null, $config = null)
     {
         try {
-            $getTableList = Arr::pluck(Schema::getAllTables(), 'tablename');
+            $getTableList = Schema::getConnection()->getDoctrineSchemaManager()->listTableNames();
             $count = 0;
             echo "======START GENERATE MODEL======\n";
             foreach ($getTableList as $key => $table) {
@@ -169,6 +169,7 @@ class ModelGenerator
             case 'integer':
             case 'bigint':
             case 'smallint':
+            case 'boolean':
                 $strGetterSetterMethod = $this->generateGetterSetterFromTemplate($columnName, $modelName, $isNotNull, self::INT_TEMPLATE);
                 break;
             case 'date':
@@ -182,7 +183,7 @@ class ModelGenerator
         }
         return $strGetterSetterMethod;
     }
-    
+
     /**
      * Function use for generate setter getter method from template
      * @author: tat.pham
