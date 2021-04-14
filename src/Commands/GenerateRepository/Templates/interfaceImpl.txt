@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repositories\{modelName}Repository;
 
 use App\Models\{modelName}Model;
+use App\Repositories\BaseRepository\BaseRepositoryImpl;
 use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -19,11 +20,21 @@ use Illuminate\Support\Facades\DB;
  * @see        {modelName}RepositoryImpl.php
  * @since      File available since Release 1.0
  */
-class {modelName}RepositoryImpl implements {modelName}Repository
+class {modelName}RepositoryImpl extends BaseRepositoryImpl implements {modelName}Repository
 {
 
     // AUTO GENERATED - DO NOT MODIFY FROM HERE
     //*************************************************
+    /**
+     * Specify Model class name
+     *
+     * @return string
+     */
+    public function model()
+    {
+        return {modelName}Model::class;
+    }
+
     /**
      * Function use for insert new Basic info
      * @author: {author}

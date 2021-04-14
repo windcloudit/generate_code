@@ -3,7 +3,8 @@
     "description": "Generate code for model, service, repository, action and unit test",
     "type": "library",
     "require": {
-        "doctrine/dbal": "^2.10"
+        "doctrine/dbal": "^2.10",
+        "prettus/l5-repository": "^2.7"
     },
     "license": "MIT",
     "authors": [
