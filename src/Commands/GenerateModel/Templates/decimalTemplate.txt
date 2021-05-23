@@ -1,0 +1,31 @@
+
+    /**
+    * Constant for field `{columnName}`.
+    */
+    public const {constantColumn} = '{columnName}';
+
+    /**
+    * Set {columnName}
+    * This setter will set value for field `{columnName}`.
+    *
+    * @param float ${variable}
+    *
+    * @return {modelName}Model
+    */
+    public function set{columnFunction}(float ${variable}): {modelName}Model
+    {
+        $this->attributes[self::{constantColumn}] = ${variable};
+        return $this;
+    }
+
+    /**
+    * Get {columnName}
+    * This getter will get value from field `{columnName}`.
+    *
+    * @return float
+    */
+    public function get{columnFunction}(): float
+    {
+        $floatValue = $this->attributes[self::{constantColumn}];
+        return (float) $floatValue;
+    }

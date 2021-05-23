@@ -20,8 +20,12 @@ class ModelGenerator
     use Builder;
 
     const SEPARATE_CODE = '//*************************************************';
+    const BOOL_TEMPLATE = 'boolTemplate.txt';
+    const BOOL_TEMPLATE_NULLABLE = 'boolTemplateNullable.txt';
     const INT_TEMPLATE = 'intTemplate.txt';
     const INT_TEMPLATE_NULLABLE = 'intTemplateNullable.txt';
+    const DECIMAL_TEMPLATE = 'decimalTemplate.txt';
+    const DECIMAL_TEMPLATE_NULLABLE = 'decimalTemplateNullable.txt';
     const DATETIME_TEMPLATE = 'dateTemplate.txt';
     const DATETIME_TEMPLATE_NULLABLE = 'dateTemplateNullable.txt';
     const CREATED_UPDATED_AT_TEMPLATE = 'createdUpdatedAtTemplate.txt';
@@ -169,13 +173,18 @@ class ModelGenerator
             case 'integer':
             case 'bigint':
             case 'smallint':
-            case 'boolean':
                 $strGetterSetterMethod = $this->generateGetterSetterFromTemplate($columnName, $modelName, $isNotNull, self::INT_TEMPLATE);
+                break;
+            case 'boolean':
+                $strGetterSetterMethod = $this->generateGetterSetterFromTemplate($columnName, $modelName, $isNotNull, self::BOOL_TEMPLATE);
                 break;
             case 'date':
             case 'timestamp':
             case 'datetime':
                 $strGetterSetterMethod = $this->generateGetterSetterFromTemplate($columnName, $modelName, $isNotNull, ($columnName === 'created_at' || $columnName === 'updated_at') ? self::CREATED_UPDATED_AT_TEMPLATE : self::DATETIME_TEMPLATE);
+                break;
+            case 'decimal':
+                $strGetterSetterMethod = $this->generateGetterSetterFromTemplate($columnName, $modelName, $isNotNull, self::DECIMAL_TEMPLATE);
                 break;
             default:
                 $strGetterSetterMethod = $this->generateGetterSetterFromTemplate($columnName, $modelName, $isNotNull, self::DEFAULT_TEMPLATE);
@@ -199,6 +208,15 @@ class ModelGenerator
     {
         //The path of template
         switch ($template) {
+            case self::BOOL_TEMPLATE:
+                if($isNotNull) {
+                    $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
+                            ['Templates', self::BOOL_TEMPLATE]));
+                } else {
+                    $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
+                            ['Templates', self::BOOL_TEMPLATE_NULLABLE]));
+                }
+                break;
             case self::INT_TEMPLATE:
                 if($isNotNull) {
                     $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
@@ -224,6 +242,15 @@ class ModelGenerator
                 } else {
                     $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
                             ['Templates', self::CREATED_UPDATED_AT_TEMPLATE_NULLABLE]));
+                }
+                break;
+            case self::DECIMAL_TEMPLATE:
+                if($isNotNull) {
+                    $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
+                            ['Templates', self::DECIMAL_TEMPLATE]));
+                } else {
+                    $templateGetterSetterPath = __DIR__ . DIRECTORY_SEPARATOR . (implode(DIRECTORY_SEPARATOR,
+                            ['Templates', self::DECIMAL_TEMPLATE_NULLABLE]));
                 }
                 break;
             default:

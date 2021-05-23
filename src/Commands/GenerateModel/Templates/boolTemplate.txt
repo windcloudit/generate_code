@@ -1,0 +1,31 @@
+
+    /**
+    * Constant for field `{columnName}`.
+    */
+    public const {constantColumn} = '{columnName}';
+
+    /**
+    * Set {columnName}
+    * This setter will set value for field `{columnName}`.
+    *
+    * @param bool ${variable}
+    *
+    * @return {modelName}Model
+    */
+    public function set{columnFunction}(bool ${variable}): {modelName}Model
+    {
+        $this->attributes[self::{constantColumn}] = ${variable};
+        return $this;
+    }
+
+    /**
+    * Get {columnName}
+    * This getter will get value from field `{columnName}`.
+    *
+    * @return bool
+    */
+    public function get{columnFunction}(): bool
+    {
+        $boolValue = $this->attributes[self::{constantColumn}];
+        return (bool) $boolValue;
+    }
